@@ -32,8 +32,10 @@ const styles = StyleSheet.create({
     incomplete: {
       backgroundColor: '#e0e0e0',
     },
+    
     taskText: {
       fontSize: 16,
+      color: 'black',
     },
 
   });

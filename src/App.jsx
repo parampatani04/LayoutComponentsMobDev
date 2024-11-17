@@ -9,31 +9,29 @@ import {
   SafeAreaView,
 } from 'react-native';
 
-import ToDoForm from './ToDoForm';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import ToDoList from './ToDoList';
+import HomeScreen from './screens/HomeScreen';
+
+import AboutScreen from './screens/AboutScreen';
+
+import ToDoForm from './components/ToDoForm';
+
+import ToDoList from './components/ToDoList';
 
 
 function App() { 
 
-  const[tasks, setTasks] = useState([
-    'Do laundry',
-    'Go to gym',
-    'Walk dog'
-  ]);
-
-  const addTask = (task) => {
-    if (!tasks.includes(task)){
-    setTasks([...tasks, task]);
-    } else {
-      alert("Duplicate entry");
-    }
-  }
+  const Stack = createNativeStackNavigator();
+  
   return (
-    <SafeAreaView>
-      <ToDoList tasks={tasks}/>
-      <ToDoForm addTask={addTask}/>
-    </SafeAreaView>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="About" component={AboutScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
